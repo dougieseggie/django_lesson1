@@ -1,0 +1,5 @@
+CDN 설정 
+    1. static directory만듦
+    2. setting.py에서 static_URL설정 
+    3. " STATICFILES_DIRS 리스트에 os.path.join(BASE_DIR,'static')
+    연결

@@ -1,0 +1,16 @@
+1. forms.py 생성. 이 때 from django import forms
+2. 기존 html 위치에 
+      {% for field in form %} (반복문)
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        <input
+          type="{{ field.field.widget.input_type }}"
+          class="form-control"
+          id="{{ field.id_for_label }}"
+          placeholder="{{ field.label }}"
+          name="{{ field.name }}"
+        />
+      </div>
+      (field 에 들어가있는 것들을 각각 가져옴)
+
+      {% endfor %}

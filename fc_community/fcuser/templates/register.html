@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block contents %}
+<div class="row mt-5">
+  <div class="col-12 text-center">
+    <!--text-center는 text 중앙 배치, mt-5는 너비인듯?-->
+    <h1>회원가입</h1>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-12">
+    <!--views의 res_data에 아무 값도 없다가 틀리면 저장되면서 -->
+    {{ error }}
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-12">
+    <form method="POST" action=".">
+      {% csrf_token %}
+
+      <!--crossdomain을 막기 위한 것으로 암호화된 키를 숨겨놓고 있을 때만 요청 처리-->
+      <!--action='.'은 현재 페이지에서 실행한다는 뜻 -->
+      <div class="form-group">
+        <label for="username">사용자이름</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="사용자이름"
+        />
+      </div>
+      <div class="form-group">
+        <label for="usermail">이메일주소</label>
+        <input
+          type="email"
+          class="form-control"
+          id="useremail"
+          name="useremail"
+          placeholder="사용자이메일"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">비밀번호</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="비밀번호"
+        />
+      </div>
+      <div class="form-group">
+        <label for="re-password">비밀번호 확인</label>
+        <input
+          type="password"
+          class="form-control"
+          id="re-password"
+          name="re-password"
+          placeholder="비밀번호 확인"
+        />
+      </div>
+
+      <label class="form-check-label" for="exampleCheck1"></label>
+
+      <button type="submit" class="btn btn-primary">등록</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

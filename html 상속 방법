@@ -1,0 +1,5 @@
+공통되는 내용을  html파일로 만들고 내용이 들어가게 할 부분을 
+{% block cotents %} / {% endblock %}으로 지정한다. 
+상속 받을 애를 만든다.
+해당 파일 처음에는 {% extends "base.html" %}
+다르게 넣을 내용에는  {% block contents %} / {% end block %}

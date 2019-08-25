@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block contents %}
+<div class="row mt-5">
+  <div class="col-12 text-center">
+    <!--text-center는 text 중앙 배치, mt-5는 너비인듯?-->
+    <h1>로그인</h1>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-12">
+    <!--views의 res_data에 아무 값도 없다가 틀리면 저장되면서 -->
+    {{ error }}
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-12">
+    <form method="POST" action=".">
+      {% csrf_token %}
+      <!--crossdomain을 막기 위한 것으로 암호화된 키를 숨겨놓고 있을 때만 요청 처리-->
+      <!--action='.'은 현재 페이지에서 실행한다는 뜻 -->
+      {% for field in form %}
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        <input
+          type="{{ field.field.widget.input_type }}"
+          class="form-control"
+          id="{{ field.id_for_label }}"
+          placeholder="{{ field.label }}"
+          name="{{ field.name }}"
+        />
+      </div>
+
+      {% endfor %}
+      <!--.as_p .as_table 등 넣으면 p태그로서, table 태그로서
+      생성해줌-->
+      <label class="form-check-label" for="exampleCheck1"></label>
+
+      <button type="submit" class="btn btn-primary">로그인</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

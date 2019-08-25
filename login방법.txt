@@ -1,0 +1,6 @@
+1. html은 register와 유사하게 
+2. view에서 파일 연결. 및 request에 대한 logic을 확인 
+3. url 에서 추가 
+4. session id를 저장 및 성공 시 어떤 정해진 곳으로 redirect 
+5. fc_community의 url에 해당 주소에 해당하는 파일 연결
+6. view 안에서 home 에 해당하는 로직 연결
