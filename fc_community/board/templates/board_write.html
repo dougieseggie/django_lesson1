@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block contents %}
+<div class="row mt-5">
+  <div class="col-12">
+    <form method="POST" action=".">
+      {% csrf_token %}
+      <!--crossdomain을 막기 위한 것으로 암호화된 키를 숨겨놓고 있을 때만 요청 처리-->
+      <!--action='.'은 현재 페이지에서 실행한다는 뜻 -->
+      {% for field in form %}
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field.field.widget.name }}
+        {% ifequal field.name 'contents' %}
+        <!--field.name이 'contents'와 같으면-->
+        <textarea
+          class="form-control"
+          name="{{ field.name }}"
+          placeholder="{{ field.label }}"
+        ></textarea>
+        {% else %}
+        <input
+          type="{{ field.field.widget.input_type }}"
+          class="form-control"
+          id="{{ field.id_for_label }}"
+          placeholder="{{ field.label }}"
+          name="{{ field.name }}"
+        />
+        {% endifequal %}
+      </div>
+      {% if field.errors %}
+      <span style="color:red">{{ field.errors }}</span>
+      {% endif %} {% endfor %}
+      <button type="submit" class="btn btn-primary">글쓰기</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
