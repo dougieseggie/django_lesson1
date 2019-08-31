@@ -28,8 +28,9 @@
           name="{{ field.name }}"
         />
       </div>
-
-      {% endfor %}
+      {% if field.errors %}
+      <span style="color: red">{{ field.errors }} </span>
+      {% endif %} {% endfor %}
       <!--.as_p .as_table 등 넣으면 p태그로서, table 태그로서
       생성해줌-->
       <label class="form-check-label" for="exampleCheck1"></label>

@@ -24,6 +24,13 @@ def logout(request):
 
 
 def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            return redirect('/')
+    else:
+        form = LoginForm()
+
     form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
