@@ -12,8 +12,7 @@ def home(request):
     user_id = request.session.get('user')
     if user_id:
         fcuser = Fcuser.objects.get(pk=user_id)
-        return HttpResponse(fcuser.username)
-    return HttpResponse('Home!')
+    return render(request, 'home.html')
 
 
 def logout(request):

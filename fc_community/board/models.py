@@ -10,6 +10,7 @@ class Board(models.Model):
         'fcuser.Fcuser', on_delete=models.CASCADE, verbose_name='작성자')
     registered_dttm = models.DateTimeField(
         auto_now_add=True, verbose_name='등록시간')
+    tags = models.ManyToManyField('tag.Tag', verbose_name='태그')
 
     def __str__(self):
         return self.title

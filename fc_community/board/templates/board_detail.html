@@ -1,9 +1,6 @@
 {% extends "base.html" %} {% block contents %}
 <div class="row mt-5">
   <div class="col-12">
-    <!--crossdomain을 막기 위한 것으로 암호화된 키를 숨겨놓고 있을 때만 요청 처리-->
-    <!--action='.'은 현재 페이지에서 실행한다는 뜻 -->
-
     <div class="form-group">
       <label for="title">제목</label>
       <input
@@ -14,9 +11,17 @@
         readonly
       />
       <label for="contents">내용</label>
+
       <textarea class="form-control" readonly>{{ board.contents }}</textarea>
+      <label for="tags"> 태그 </label>
+      <span id="tags" class="form-control">
+        {% for tag in board.tags.all%}
+        {{ tag }}, {% endfor %}
+      </span>
     </div>
-    <button class="btn btn-primary">돌아가기</button>
+    <button class="btn btn-primary" onclick="location.href='/board/list'">
+      돌아가기
+    </button>
   </div>
 </div>
 {% endblock %}

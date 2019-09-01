@@ -13,7 +13,7 @@
 
       <tbody class="text-dark">
         {% for board in boards %}
-        <tr>
+        <tr onclick="location.href='/board/detail/{{board.id}}'">
           <th>{{ board.id }}</th>
           <td>{{ board.title }}</td>
           <td>{{ board.writer }}</td>
@@ -28,13 +28,15 @@
   <div class="col-12">
     <nav>
       <ul class="pagination justify-content-center">
+        {% if boards.has_previous %}
         <li class="page-item">
-          {% if boards.has_previous %}
           <a class="page-link" href="?p={{ boards.previous_page_number }}">
             이전으로
           </a>
           {% else %}
-          <a class="page-link disabled" href="#">이전으로</a>
+          <li class="page-item disabled">
+              <a class="page-link" href="#">이전으로</a>
+          </li>
           {% endif %}
         </li>
         <li class="page-item">
@@ -42,13 +44,15 @@
             {{ boards.number }} / {{ boards.paginator.num_pages }}
           </a>
         </li>
+        {% if boards.has_next %}
         <li class="page-item">
-          {% if boards.has_next %}
           <a class="page-link" href="?p={{ boards.next_page_number }}">
             다음으로
           </a>
           {% else %}
-          <a class="page-link disabled" href="#">다음으로</a>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">다음으로</a>
+          </li>
           {% endif %}
         </li>
       </ul>
@@ -57,7 +61,7 @@
 </div>
 <div class="row">
   <div class="col-12">
-    <button class="btn btn-primary">글쓰기</button>
+    <button class="btn btn-primary" onclick="location.href='/board/write/'">글쓰기</button>
   </div>
 </div>
 {% endblock %}
