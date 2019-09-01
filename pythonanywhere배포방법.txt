@@ -1,0 +1,9 @@
+1. 가입 
+2. 전체 프로젝트 압축해서 업로드 
+3. 우측 상단 콘솔 진입
+4. unzip (파일명)
+5. virtualenv --python=python3.7 (가상환경이름)
+6. pip install django 
+7.(fc_env) 12:35 ~/fc_community $ python3 manage.py collectstatic
+8. web 눌러서 들어가서 설정 
+9. wsgi.py 들어가서 helloworld주석 묶고(cmd+/) 장고 쪽을 주석 풀고

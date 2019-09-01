@@ -23,10 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'g512+lbdodmvg@&xqiu(1$6n$78v=0)5ywv9nb8k12@9s%lm*s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+DEBUG = False
+ALLOWED_HOSTS = [
+    'slakingex.pythonanywhere.com'
+]
+# 이건 서비스를 만들고 올렸을 때 위의 주소로만 접속하도록 막는 역할
+# 저기 넣을 내용이 없으면 별표시해도 됨.
 
 # Application definition
 
@@ -121,6 +123,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
+
+# css등 static file을 전부 수집한 다음 제공하려 하며, 한 디렉토리에 모아서 제공. (static)
+"""STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-]
+]"""
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
